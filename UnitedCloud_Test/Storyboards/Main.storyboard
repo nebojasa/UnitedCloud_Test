@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Container View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ContainerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Side List View Controller-->
+        <scene sceneID="AwY-Rh-CV2">
+            <objects>
+                <viewController storyboardIdentifier="SideListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u6V-SB-3Xq" customClass="SideListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FAh-LZ-a8f"/>
+                        <viewControllerLayoutGuide type="bottom" id="oWb-1f-ezz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YBs-cf-Qh8">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xac-yA-sPm">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="80" id="9LA-4p-4bn">
+                                        <rect key="frame" x="0.0" y="28" width="667" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9LA-4p-4bn" id="H4D-pn-5QB">
+                                            <rect key="frame" x="0.0" y="0.0" width="667" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="u6V-SB-3Xq" id="fQL-KE-8ru"/>
+                                    <outlet property="delegate" destination="u6V-SB-3Xq" id="aDD-zz-KPZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xac-yA-sPm" firstAttribute="leading" secondItem="YBs-cf-Qh8" secondAttribute="leading" id="89p-ES-OEC"/>
+                            <constraint firstAttribute="trailing" secondItem="xac-yA-sPm" secondAttribute="trailing" id="AN9-8R-4lT"/>
+                            <constraint firstItem="xac-yA-sPm" firstAttribute="top" secondItem="YBs-cf-Qh8" secondAttribute="top" id="bhf-ih-Mmc"/>
+                            <constraint firstItem="oWb-1f-ezz" firstAttribute="top" secondItem="xac-yA-sPm" secondAttribute="bottom" id="pmK-Lw-hSX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="xac-yA-sPm" id="je2-mV-Giq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LkE-94-r3v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="823.53823088455783" y="112.8"/>
+        </scene>
+        <!--Player-->
+        <scene sceneID="q8c-Vs-JJ0">
+            <objects>
+                <viewController storyboardIdentifier="PlayerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="P3O-Nn-dAg" customClass="PlayerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GhR-09-xzp"/>
+                        <viewControllerLayoutGuide type="bottom" id="VK6-DC-aOQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Yb-E7-LcD">
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="sFE-mS-rTW">
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="326"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sFE-mS-rTW" secondAttribute="trailing" id="2dp-cY-nCU"/>
+                            <constraint firstItem="sFE-mS-rTW" firstAttribute="top" secondItem="7Yb-E7-LcD" secondAttribute="top" id="BFB-sN-LVF"/>
+                            <constraint firstItem="sFE-mS-rTW" firstAttribute="leading" secondItem="7Yb-E7-LcD" secondAttribute="leading" id="XxV-JB-Uwh"/>
+                            <constraint firstItem="VK6-DC-aOQ" firstAttribute="top" secondItem="sFE-mS-rTW" secondAttribute="bottom" id="s1z-aY-bQF"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Player" id="L7F-km-jlg">
+                        <barButtonItem key="backBarButtonItem" title="Channels" id="gia-Wn-lTK"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="overview_pages_4" id="nhE-YF-na2">
+                            <connections>
+                                <action selector="menuButtonTapped" destination="P3O-Nn-dAg" id="3jm-FK-FTp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xc1-ei-9kW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1611.5442278860571" y="832.79999999999995"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="b0z-tY-fid">
+            <objects>
+                <navigationController storyboardIdentifier="PlayerNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tlv-iW-BQH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hDV-1w-7Xp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="P3O-Nn-dAg" kind="relationship" relationship="rootViewController" id="CtL-Jk-ymC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eSc-Hd-XUt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="821.73913043478262" y="832.79999999999995"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bg" width="758" height="430"/>
+        <image name="overview_pages_4" width="25" height="25"/>
+    </resources>
+</document>
