@@ -9,4 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface PlayerViewController : UIViewController
+@property (nonatomic) BOOL isOpened;
 @end

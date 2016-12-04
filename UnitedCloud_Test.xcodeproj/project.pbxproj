@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		523DF47F1DF3F5B2007719E3 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 523DF47E1DF3F5B2007719E3 /* AsyncImageView.m */; };
+		526E78081DF4AA5B0044E415 /* StreamingCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 526E78071DF4AA5B0044E415 /* StreamingCollectionViewCell.m */; };
 		527FE97F1DF2D4480066DB1B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 527FE97E1DF2D4480066DB1B /* main.m */; };
 		527FE98A1DF2D4490066DB1B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527FE9891DF2D4490066DB1B /* Assets.xcassets */; };
 		527FE9961DF2D8270066DB1B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 527FE9951DF2D8270066DB1B /* SystemConfiguration.framework */; };
@@ -27,6 +28,8 @@
 /* Begin PBXFileReference section */
 		523DF47D1DF3F5B2007719E3 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
 		523DF47E1DF3F5B2007719E3 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
+		526E78061DF4AA5B0044E415 /* StreamingCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreamingCollectionViewCell.h; sourceTree = "<group>"; };
+		526E78071DF4AA5B0044E415 /* StreamingCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreamingCollectionViewCell.m; sourceTree = "<group>"; };
 		527FE97A1DF2D4480066DB1B /* UnitedCloud_Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnitedCloud_Test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		527FE97E1DF2D4480066DB1B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		527FE9891DF2D4490066DB1B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -157,6 +160,8 @@
 			children = (
 				527FE9BE1DF30E650066DB1B /* ChannelTableViewCell.h */,
 				527FE9BF1DF30E650066DB1B /* ChannelTableViewCell.m */,
+				526E78061DF4AA5B0044E415 /* StreamingCollectionViewCell.h */,
+				526E78071DF4AA5B0044E415 /* StreamingCollectionViewCell.m */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				527FE9BD1DF30C9D0066DB1B /* PlayerViewController.m in Sources */,
+				526E78081DF4AA5B0044E415 /* StreamingCollectionViewCell.m in Sources */,
 				523DF47F1DF3F5B2007719E3 /* AsyncImageView.m in Sources */,
 				527FE9AC1DF2F4020066DB1B /* SideListViewController.m in Sources */,
 				527FE9AF1DF2F4A40066DB1B /* Channel.m in Sources */,

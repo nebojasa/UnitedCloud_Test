@@ -7,6 +7,7 @@
 //
 
 #import "SideListViewController.h"
+#import "ChannelTableViewCell.h"
 #import "DataFetcher.h"
 #import "Channel.h"
 #import "Constants.h"
@@ -28,31 +29,18 @@
     return _itemsArray;
 }
 
+#pragma mark - Actions
+
+- (IBAction)menuButtonTapped {
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_MENU_NOTIFICATION object:nil];
+}
+
+- (IBAction)swipeHandler:(UISwipeGestureRecognizer *)sender {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_MENU_NOTIFICATION object:nil];
+}
+
 #pragma mark - Private API
-
-//- (void)loadData {
-//    [[DataFetcher sharedInstance] fetchDataFromURL:JSON_URL withCompletion:^(BOOL success, NSDictionary *dictionary, NSError *error)
-//     {
-//         if (success) {
-//             [self.itemsArray removeAllObjects];
-//             
-//             NSLog(@"%@", dictionary[@"channels_list"]);
-//             
-//             for (NSDictionary *channelDictionary in dictionary[@"channels_list"]) {
-//                 Channel *channel = [[Channel alloc] initWithDictionary:channelDictionary];
-//                 [self.itemsArray addObject:channel];
-//             }
-//             
-//             [self.tableView reloadData];
-//         } else {
-//             if (error) {
-//                 NSLog(@"Error occured: %@", error.localizedDescription);
-//             }
-//         }
-//     }];
-//}
-//
-
 
 - (void)registerForNotifications {
     [[NSNotificationCenter defaultCenter] addObserverForName:CHANNELS_DOWNLOADED
@@ -74,7 +62,7 @@
              
              [self.tableView reloadData];
              
-             // Inform user that news are downloaded
+             // Inform user that channels are downloaded
              [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_MENU_NOTIFICATION object:nil];
          } else {
              NSLog(@"Error occured");
@@ -86,17 +74,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // 1. BLOCK
-    //[self loadData];
-    
     [[DataFetcher sharedInstance] fetchDataFromURL:JSON_URL];
-    // 2. NOTIFICATION
     [self registerForNotifications];
-    
-    // 3. DELEGATE
-    //[Fetcher sharedInstance].delegate = self;
-    
+    UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                                            action:@selector(swipeHandler:)];
+    gestureRecognizer.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:gestureRecognizer];
+
 }
 
 #pragma mark - UITableViewDataSource
@@ -110,10 +94,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    ChannelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     Channel *channel = [self.itemsArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = channel.channelName;
+    cell.channelNumberLabel.text = channel.channelNumber;
+    cell.channelNameLabel.text = channel.channelName;
+    cell.channelImageView.imageURL = channel.imageURL;
     
     return cell;
 }
@@ -127,26 +113,7 @@
     
     [[NSNotificationCenter defaultCenter] postNotificationName:CLOSE_MENU_NOTIFICATION object:nil];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_ARTICLE_NOTIFICATION object:channel];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_CHANNEL_NOTIFICATION object:channel];
 }
-
-//#pragma mark - FetcherDelegate
-//
-//- (void)dataFetched:(NSDictionary *)dictionary {
-//    if (dictionary) {
-//        [self.itemsArray removeAllObjects];
-//        
-//        NSLog(@"%@", dictionary[@"channels_list"]);
-//        
-//        for (NSDictionary *channelDictionary in dictionary[@"channels_list"]) {
-//            Channel *channel = [[Channel alloc] initWithDictionary:channelDictionary];
-//            [self.itemsArray addObject:channel];
-//        }
-//        
-//        [self.tableView reloadData];
-//    } else {
-//        NSLog(@"Error occured");
-//    }
-//}
 
 @end
