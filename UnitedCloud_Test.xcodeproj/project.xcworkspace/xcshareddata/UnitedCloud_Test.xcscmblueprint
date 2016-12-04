@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9674E82B9AE6DB3CDD1DFF74B47C5C9A1518EFA8",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9674E82B9AE6DB3CDD1DFF74B47C5C9A1518EFA8" : 9223372036854775807,
+    "6C4D490E36DE2BC28D3EEF3B9B1D2C119F145ACE" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BD4316E2-3143-42B4-AC6D-E1ED7D3DD4E0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9674E82B9AE6DB3CDD1DFF74B47C5C9A1518EFA8" : "UC_Test\/",
+    "6C4D490E36DE2BC28D3EEF3B9B1D2C119F145ACE" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "UnitedCloud_Test",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "UnitedCloud_Test.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nebojasa\/ToDo.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6C4D490E36DE2BC28D3EEF3B9B1D2C119F145ACE"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nebojasa\/UnitedCloud_Test.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9674E82B9AE6DB3CDD1DFF74B47C5C9A1518EFA8"
+    }
+  ]
+}

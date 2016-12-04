@@ -8,17 +8,19 @@
 
 #import "ChannelTableViewCell.h"
 
+
 @implementation ChannelTableViewCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+#pragma mark - Properties
+
+- (void)setChannel:(Channel *)channel {
+    _channel = channel;
+    self.channelNameLabel.text = channel.channelName;
+    self.channelNumberLabel.text = channel.channelNumber;
+    //self.hd = [UIImage imageNamed:[NSString stringWithFormat:@"%.@", channel.isHD]];
+    //self.fav = [UIImage imageNamed:[NSString stringWithFormat:@"%.@", channel.isFavourite]];
+    self.channelImageView.imageURL = channel.imageURL;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end

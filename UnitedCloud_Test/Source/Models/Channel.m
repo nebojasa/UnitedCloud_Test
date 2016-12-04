@@ -16,9 +16,10 @@
     if (self = [super init]) {
         self.channelName = dictionary[@"name"];
         self.channelNumber = dictionary[@"num"];
-        //self.imageURL = dictionary[@"imageUrl"];
+        self.imageURL = dictionary[@"imageUrl"];
         self.isHD = dictionary[@"hd"];
         self.isFavourite = dictionary[@"fav"];
+        self.channelID = dictionary[@"id"];
     }
     
     return self;
