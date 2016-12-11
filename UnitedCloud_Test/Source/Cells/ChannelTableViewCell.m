@@ -17,9 +17,10 @@
     _channel = channel;
     self.channelNameLabel.text = channel.channelName;
     self.channelNumberLabel.text = channel.channelNumber;
-    //self.hd = [UIImage imageNamed:[NSString stringWithFormat:@"%.@", channel.isHD]];
-    //self.fav = [UIImage imageNamed:[NSString stringWithFormat:@"%.@", channel.isFavourite]];
     self.channelImageView.imageURL = channel.imageURL;
+    //self.hd = [UIImage imageNamed:[NSString stringWithFormat:@"%bool", channel.isHD]];
+    //self.fav = [UIImage imageNamed:[NSString stringWithFormat:@"%bool", channel.isFavourite]];
+    
 }
 
 

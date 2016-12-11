@@ -15,6 +15,7 @@
 @interface SideListViewController() <UITableViewDataSource, UITableViewDelegate, ChannelFetcherDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *itemsArray;
+@property (strong, nonatomic) Channel *selectedChannel;
 @end
 
 @implementation SideListViewController
@@ -25,13 +26,20 @@
     if (!_itemsArray) {
         _itemsArray = [[NSMutableArray alloc] init];
     }
-    
     return _itemsArray;
 }
 
 #pragma mark - Actions
 
-- (IBAction)menuButtonTapped {
+- (IBAction)favouriteButtonTapped {
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_MENU_NOTIFICATION object:nil];
+}
+
+- (IBAction)hdButtonTapped {
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_MENU_NOTIFICATION object:nil];
+}
+
+- (IBAction)allChannelsButtonTapped {
     [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_MENU_NOTIFICATION object:nil];
 }
 
@@ -56,8 +64,8 @@
              NSLog(@"%@", dictionary[@"channels_list"]);
              
              for (NSDictionary *channelDictionary in dictionary[@"channels_list"]) {
-                 Channel *article = [[Channel alloc] initWithDictionary:channelDictionary];
-                 [self.itemsArray addObject:article];
+                 Channel *channel = [[Channel alloc] initWithDictionary:channelDictionary];
+                 [self.itemsArray addObject:channel];
              }
              
              [self.tableView reloadData];
@@ -85,10 +93,6 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.itemsArray.count;
 }
@@ -100,18 +104,17 @@
     cell.channelNumberLabel.text = channel.channelNumber;
     cell.channelNameLabel.text = channel.channelName;
     cell.channelImageView.imageURL = channel.imageURL;
-    
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_MENU_NOTIFICATION object:nil];
     
     Channel *channel = [self.itemsArray objectAtIndex:indexPath.row];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:CLOSE_MENU_NOTIFICATION object:nil];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_CHANNEL_NOTIFICATION object:channel];
 }

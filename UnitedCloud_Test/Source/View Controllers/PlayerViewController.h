@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import "Channel.h"
 
 @interface PlayerViewController : UIViewController
 @property (nonatomic) BOOL isOpened;
+@property (strong,nonatomic) AVPlayer *player;
+@property (strong,nonatomic) AVPlayerItem *playerItem;
+@property (strong,nonatomic) Channel *selectedChannel;
 @end

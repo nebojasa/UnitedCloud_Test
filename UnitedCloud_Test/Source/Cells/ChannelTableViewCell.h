@@ -14,8 +14,8 @@
 @property (weak, nonatomic) IBOutlet AsyncImageView *channelImageView;
 @property (weak, nonatomic) IBOutlet UILabel *channelNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *channelNumberLabel;
-@property (weak, nonatomic) IBOutlet UIImage *hd;
-@property (weak, nonatomic) IBOutlet UIImage *fav;
+//@property (weak, nonatomic) IBOutlet UIImage *hd;
+//@property (weak, nonatomic) IBOutlet UIImage *fav;
 
 @property (strong, nonatomic) Channel *channel;
 

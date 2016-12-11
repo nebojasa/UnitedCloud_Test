@@ -13,6 +13,9 @@
 @property (strong, nonatomic) NSString *channelName;
 @property (strong, nonatomic) NSString *imageURL;
 @property (strong, nonatomic) NSString *channelID;
+@property (strong, nonatomic) NSURL *streamingURL;
+@property (strong, nonatomic) NSString *pp;
+@property (strong, nonatomic) NSString *q;
 @property (nonatomic) BOOL isHD;
 @property (nonatomic) BOOL isFavourite;
 
