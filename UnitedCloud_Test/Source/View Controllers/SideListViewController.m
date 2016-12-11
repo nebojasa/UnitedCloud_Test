@@ -7,6 +7,7 @@
 //
 
 #import "SideListViewController.h"
+#import "PlayerViewController.h"
 #import "ChannelTableViewCell.h"
 #import "DataFetcher.h"
 #import "Channel.h"
@@ -29,6 +30,30 @@
     return _itemsArray;
 }
 
+- (NSArray *)favouriteChannelsArray {
+    NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
+    
+    for (Channel *channel in self.itemsArray) {
+        if (channel.isFavourite == YES) {
+            [resultsArray addObject:channel];
+        }
+    }
+    
+    return resultsArray;
+}
+
+- (NSArray *)hdChannelsArray {
+    NSMutableArray *resultsArray = [[NSMutableArray alloc] init];
+    
+    for (Channel *channel in self.itemsArray) {
+        if (channel.isHD == YES) {
+            [resultsArray addObject:channel];
+        }
+}
+
+    return resultsArray;
+}
+
 #pragma mark - Actions
 
 - (IBAction)favouriteButtonTapped {
@@ -37,6 +62,9 @@
 
 - (IBAction)hdButtonTapped {
     [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_MENU_NOTIFICATION object:nil];
+    
+    [self.itemsArray removeAllObjects];
+    [self.tableView reloadData];
 }
 
 - (IBAction)allChannelsButtonTapped {
@@ -99,7 +127,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ChannelTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
     Channel *channel = [self.itemsArray objectAtIndex:indexPath.row];
     cell.channelNumberLabel.text = channel.channelNumber;
     cell.channelNameLabel.text = channel.channelName;
@@ -110,13 +137,11 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_MENU_NOTIFICATION object:nil];
-    
     Channel *channel = [self.itemsArray objectAtIndex:indexPath.row];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_CHANNEL_NOTIFICATION object:channel];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_MENU_NOTIFICATION object:nil];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObject:channel forKey:@"Channel"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_CHANNEL_NOTIFICATION object:nil userInfo:dictionary];
 }
 
 @end

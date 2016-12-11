@@ -11,8 +11,9 @@
 #import "Channel.h"
 
 @interface PlayerViewController : UIViewController
+@property (strong, nonatomic) NSMutableArray *channelsArray;
 @property (nonatomic) BOOL isOpened;
 @property (strong,nonatomic) AVPlayer *player;
 @property (strong,nonatomic) AVPlayerItem *playerItem;
-@property (strong,nonatomic) Channel *selectedChannel;
+@property (strong,nonatomic) Channel *channel;
 @end

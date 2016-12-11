@@ -19,14 +19,9 @@
         self.channelName = dictionary[@"name"];
         self.channelNumber = dictionary[@"num"];
         self.channelID = dictionary[@"id"];
-        //NSString *string1 = LOGO_IMAGE_URL;
-        //NSString *string3 = @".png";
-        //NSString *logoString = [NSString stringWithFormat: @"%@%@%@", string1, self.channelID, string3];
         self.imageURL =[self makeCombinedLogoString];
-        //[NSString stringWithFormat:@"%@",logoString];
         self.isHD = dictionary[@"hd"];
         self.isFavourite = dictionary[@"fav"];
-        
         self.pp =dictionary[@"pp"];
         self.q =dictionary[@"q"];
         self.streamingURL =[NSURL URLWithString: [self makeCombinedStreamingString]];

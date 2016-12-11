@@ -7,67 +7,67 @@
 //
 
 #import "PlayerViewController.h"
-#import "DataFetcher.h"
 #import "Constants.h"
 #import "SideListViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AVKit/AVKit.h>
 
-static const NSString *ItemStatusContext;
-
-@interface PlayerViewController ()
-@property (strong, nonatomic) NSMutableArray *itemsArray;
-@end
-
 @implementation PlayerViewController
+
+#pragma mark - Properties
+
+- (NSMutableArray *)channelsArray {
+    if (!_channelsArray) {
+        _channelsArray = [[NSMutableArray alloc] init];
+    }
+    return _channelsArray;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
+#pragma mark - Actions
+
+- (IBAction)swipeHandlerHorizontal:(UISwipeGestureRecognizer *)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_MENU_NOTIFICATION object:nil];
+}
+
+- (IBAction)swipeHandlerVertical:(UISwipeGestureRecognizer *)sender {
+    //[[NSNotificationCenter defaultCenter] postNotificationName:CLOSE_MENU_NOTIFICATION object:nil];
+}
+
 
 #pragma mark - Private API
 
 - (void)registerForNotifications {
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:OPEN_CHANNEL_NOTIFICATION
-                                                      object:nil
-                                                       queue:[NSOperationQueue mainQueue]
-                                                  usingBlock:^(NSNotification *note)
-     {
-         if (self.player.currentItem != nil) {
-             [self stopVideo];
-         } else {
-
-         NSURL *url = [NSURL URLWithString:@"http://devstreaming.apple.com/videos/wwdc/2016/102w0bsn0ge83qfv7za/102/hls_vod_mvp.m3u8"];
-         AVAsset *avAsset = [AVAsset assetWithURL:url];
-         AVPlayerItem *playerItem = [[AVPlayerItem alloc]initWithAsset:avAsset];
-         AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
-         AVPlayerViewController *playerViewController = [AVPlayerViewController new];
-         playerViewController.player = player;
-         playerViewController.showsPlaybackControls = YES;
-         playerViewController.videoGravity = AVLayerVideoGravityResizeAspectFill;
-         playerViewController.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
-         [self.view addSubview:playerViewController.view];
-         [player play];
-         // register notificaton for end of movie
-         [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(stopVideo:) name:AVPlayerItemDidPlayToEndTimeNotification object:self.player.currentItem];
-         }
-     }];
+   
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(triggerAction:) name:OPEN_CHANNEL_NOTIFICATION object:nil];
 }
 
-- (void)stopVideo {
-    
-    // react by setting the video back to 0
-    
+- (void) triggerAction:(NSNotification *) notification {
+    NSDictionary *dict = notification.userInfo;
+    Channel *channel = [dict valueForKey:@"Channel"];
+    AVAsset *avAsset = [AVAsset assetWithURL:channel.streamingURL];
+    AVPlayerItem *playerItem = [[AVPlayerItem alloc]initWithAsset:avAsset];
+    AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
+    AVPlayerViewController *playerViewController = [AVPlayerViewController new];
+    playerViewController.player = player;
+    playerViewController.showsPlaybackControls = NO;
+    playerViewController.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    playerViewController.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+    [self.view addSubview:playerViewController.view];
+    [player play];
+}
+
+- (void)stopVideo1 {
     [self.player seekToTime:kCMTimeZero];
-    
-    // then pause it
     [self.player pause];
 }
 
 - (void)stopVideo:(NSNotification *)notification {
     
-    // react by setting the video back to 0
-    
     [self.player seekToTime:kCMTimeZero];
-    
-    // then pause it
     [self.player pause];
 }
 
@@ -93,31 +93,6 @@ static const NSString *ItemStatusContext;
     [self.view addGestureRecognizer:gestureRecognizerD];
     
     
-}
-
-#pragma mark - Properties
-
-- (NSMutableArray *)itemsArray {
-    if (!_itemsArray) {
-        _itemsArray = [[NSMutableArray alloc] init];
-    }
-    return _itemsArray;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return UIStatusBarStyleLightContent;
-}
-
-#pragma mark - Actions
-
-- (IBAction)swipeHandlerHorizontal:(UISwipeGestureRecognizer *)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:OPEN_MENU_NOTIFICATION object:nil];
-}
-
-- (IBAction)swipeHandlerVertical:(UISwipeGestureRecognizer *)sender {
-    //[[NSNotificationCenter defaultCenter] postNotificationName:CLOSE_MENU_NOTIFICATION object:nil];
-    
-
 }
 
 #pragma mark - ViewLifecycle

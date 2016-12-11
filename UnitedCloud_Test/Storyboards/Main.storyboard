@@ -52,7 +52,7 @@
                                         <rect key="frame" x="0.0" y="28" width="334" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9LA-4p-4bn" id="H4D-pn-5QB">
-                                            <rect key="frame" x="0.0" y="0.0" width="334" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RTS1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hZ0-rV-xXA">
@@ -128,7 +128,7 @@
                     <view key="view" contentMode="scaleToFill" id="Woa-YD-I5X">
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.55299225976529276" green="0.91657016002219305" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJk-kr-veF" userLabel="First Responder" sceneMemberID="firstResponder"/>
