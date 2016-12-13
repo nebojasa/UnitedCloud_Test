@@ -37,7 +37,6 @@
     //[[NSNotificationCenter defaultCenter] postNotificationName:CLOSE_MENU_NOTIFICATION object:nil];
 }
 
-
 #pragma mark - Private API
 
 - (void)registerForNotifications {
@@ -45,7 +44,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(triggerAction:) name:OPEN_CHANNEL_NOTIFICATION object:nil];
 }
 
-- (void) triggerAction:(NSNotification *) notification {
+- (void)triggerAction:(NSNotification *)notification {
     NSDictionary *dict = notification.userInfo;
     Channel *channel = [dict valueForKey:@"Channel"];
     AVAsset *avAsset = [AVAsset assetWithURL:channel.streamingURL];
@@ -58,11 +57,6 @@
     playerViewController.view.frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
     [self.view addSubview:playerViewController.view];
     [player play];
-}
-
-- (void)stopVideo1 {
-    [self.player seekToTime:kCMTimeZero];
-    [self.player pause];
 }
 
 - (void)stopVideo:(NSNotification *)notification {

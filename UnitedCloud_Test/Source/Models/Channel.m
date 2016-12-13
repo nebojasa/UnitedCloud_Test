@@ -43,8 +43,8 @@
 - (NSString*) makeCombinedStreamingString {
     
     NSString *string1 = STREAM_URL_BASE;
-    NSString *string2 = @"&channel";
-    NSString *string3 = @"&stream";
+    NSString *string2 = @"&channel=";
+    NSString *string3 = @"&stream=";
     NSString *streamingString = [NSString stringWithFormat: @"%@%@%@%@%@", string1,string2,self.pp,string3,self.q];
     return streamingString;
 }
