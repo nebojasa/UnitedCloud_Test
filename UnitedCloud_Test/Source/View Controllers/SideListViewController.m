@@ -13,7 +13,7 @@
 #import "Channel.h"
 #import "Constants.h"
 
-@interface SideListViewController() <UITableViewDataSource, UITableViewDelegate, ChannelFetcherDelegate>
+@interface SideListViewController() <UITableViewDataSource, UITableViewDelegate,ChannelFetcherDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *itemsArray;
 @property (strong, nonatomic) Channel *selectedChannel;
