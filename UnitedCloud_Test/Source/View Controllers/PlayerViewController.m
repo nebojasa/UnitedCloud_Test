@@ -45,6 +45,7 @@
 }
 
 - (void)triggerAction:(NSNotification *)notification {
+    
     NSDictionary *dict = notification.userInfo;
     Channel *channel = [dict valueForKey:@"Channel"];
     AVAsset *avAsset = [AVAsset assetWithURL:channel.streamingURL];
@@ -66,12 +67,8 @@
 }
 
 - (void)repeatVideo:(NSNotification *)notification {
-    
-    // react by setting the video back to 0
-    
+
     [self.player seekToTime:kCMTimeZero];
-    
-    // then play it again
     [self.player play];
 }
 
